@@ -53,4 +53,9 @@ export default class UserService {
         const result = await this.userRepository.createEntity(user);
         return result;
     }
+
+    async deleteUser(id: number) {
+        const result = await this.userRepository.deleteEntity(id);
+        return result;
+    }
 }

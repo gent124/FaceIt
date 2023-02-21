@@ -11,12 +11,16 @@ export class UserRepository<T extends User> implements IBaseRepository<User> {
     //constructor to initialize the database connection 
     constructor(pool: Pool, tableName: string) {
         this.pool = pool;
-        this.tableName = tableName;
-        if (this.pool) {
-            console.log("Database connection established");
 
-        }
+        this.tableName = tableName;
+
+        this.pool.connect(function (err) {
+            if (err) throw err;
+            console.log("Connected!");
+        });
     }
+
+
 
     async getEntities(): Promise<User[]> {
 
@@ -33,11 +37,25 @@ export class UserRepository<T extends User> implements IBaseRepository<User> {
 
     async createEntity(entity: User): Promise<User> {
         const table_keys = Object.keys(entity).join(', ');
-        const table_values = Object.values(entity).join(', ');
-        console.log(table_keys);
-        console.log(table_values);
+        const table_values = Object.values(entity);
+        const parsedValues = table_values.map(value => {
+            // console.log(typeof value)
+            if (typeof value === 'string') {
+                return `'${value}'`;
+            } else {
+                return value;
+            }
+        }
+        ).join(', ');
+        // console.log(table_keys);
+        // console.log(table_values);
+        // console.log(parsedValues);
+        // console.log(this.tableName);
+        const query = `INSERT INTO ${this.tableName} (${table_keys}) VALUES (${parsedValues}) RETURNING *;`;
 
-        const result = await this.pool.query(`INSERT INTO (${table_keys}) VALUES (${table_values})`);
+        // console.log(`INSERT INTO ${this.tableName} (${table_keys}) VALUES (${parsedValues}) RETURNING *`);
+        console.log(query)
+        const result = await this.pool.query(query);
         return result.rows[0];
     }
 

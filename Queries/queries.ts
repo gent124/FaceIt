@@ -43,18 +43,18 @@ const createUser = async (req: Request, res: Response) => {
     }
 }
 
-// //Method to delete a user
-// const deleteUser = async (req: Request, res: Response) => {
-//     const id = parseInt(req.params.id);
-//     const user = await userService.deleteUser(id);
-//     res.status(200).send(user)
+//Method to delete a user
+const deleteUser = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    const user = await userService.deleteUser(id);
+    res.status(200).send(user)
 
-// }
+}
 //exporting methods
 export = {
     getUsers,
     getUserById,
     createUser,
-    // deleteUser
+    deleteUser
 
 }

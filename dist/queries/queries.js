@@ -50,9 +50,15 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         res.status(400).send('User not added');
     }
 });
+//Method to delete a user
+const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = parseInt(req.params.id);
+    const user = yield userService.deleteUser(id);
+    res.status(200).send(user);
+});
 module.exports = {
     getUsers,
     getUserById,
     createUser,
-    // deleteUser
+    deleteUser
 };

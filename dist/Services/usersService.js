@@ -59,5 +59,11 @@ class UserService {
             return result;
         });
     }
+    deleteUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield this.userRepository.deleteEntity(id);
+            return result;
+        });
+    }
 }
 exports.default = UserService;
