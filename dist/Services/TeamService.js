@@ -9,45 +9,43 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserService = void 0;
-const BaseRepository_1 = require("../Repositories/BaseRepository"); //Importing the UserRepository
-//Declraing an instance of type UserRepository
-userRepository: BaseRepository_1.BaseRepository;
-class UserService {
+exports.TeamService = void 0;
+const BaseRepository_1 = require("../Repositories/BaseRepository");
+teamRepository: BaseRepository_1.BaseRepository;
+class TeamService {
     //Constructor to inject the UserRepository
-    constructor(userRepository) {
-        this.userRepository = userRepository;
+    constructor(teamRepository) {
+        this.teamRepository = teamRepository;
     }
-    getAllUsers() {
+    getAllTeams() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Inside the user service");
-            const result = yield this.userRepository.getEntities();
+            const result = yield this.teamRepository.getEntities();
             return result;
         });
     }
-    getUserById(id) {
+    getTeamById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.userRepository.getEntityById(id);
+            const result = yield this.teamRepository.getEntityById(id);
             return result;
         });
     }
-    createUser(user) {
+    createTeam(team) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.userRepository.createEntity(user);
+            const result = yield this.teamRepository.createEntity(team);
             return result;
         });
     }
-    updateUser(id, user) {
+    updateTeam(id, team) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.userRepository.updateEntity(id, user);
+            const result = yield this.teamRepository.updateEntity(id, team);
             return result;
         });
     }
-    deleteUser(id) {
+    deleteTeam(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.userRepository.deleteEntity(id);
+            const result = yield this.teamRepository.deleteEntity(id);
             return result;
         });
     }
 }
-exports.UserService = UserService;
+exports.TeamService = TeamService;

@@ -25,14 +25,13 @@ class UserRepository {
     getEntities() {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield this.pool.query(`Select * from ${this.tableName}`);
-            console.log(this.tableName);
+            console.log("inside the repository");
             return result.rows;
         });
     }
     getEntityById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield this.pool.query(`Select * from ${this.tableName} where id = ${id}`);
-            console.log(this.tableName);
             return result.rows[0];
         });
     }
