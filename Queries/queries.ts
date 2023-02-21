@@ -3,7 +3,7 @@ import { Pool } from 'pg'; // import Pool from the postgres library
 import dotenv from 'dotenv'; // import dotenv to provide with variables from .env file
 dotenv.config(); //Loads the .env 
 import { Request, Response, NextFunction } from "express"; // importing request , response , next function from express to define the types
-import { UserRepository } from '../repositories/userRepository'; // Importing UserRepository from userRepository file
+import { UserRepository } from '../Repositories/userRepository'; // Importing UserRepository from userRepository file
 
 //Creating a configuration for our database server
 const pool = new Pool({

@@ -15,7 +15,7 @@ const usersService_1 = __importDefault(require("../Services/usersService")); // 
 const pg_1 = require("pg"); // import Pool from the postgres library
 const dotenv_1 = __importDefault(require("dotenv")); // import dotenv to provide with variables from .env file
 dotenv_1.default.config(); //Loads the .env 
-const userRepository_1 = require("../repositories/userRepository"); // Importing UserRepository from userRepository file
+const userRepository_1 = require("../Repositories/userRepository"); // Importing UserRepository from userRepository file
 //Creating a configuration for our database server
 const pool = new pg_1.Pool({
     host: process.env.DB_HOST,

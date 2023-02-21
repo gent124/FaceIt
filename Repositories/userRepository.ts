@@ -4,7 +4,7 @@ import { User } from '../Model/user';
 import { IBaseRepository } from '../Repositories/baseRepository';
 
 //Exporting UserRepositories class
-export class UserRepository<T> implements IBaseRepository<User> {
+export class UserRepository<T extends User> implements IBaseRepository<User> {
     //Declaring a pool variable of the pg.Pool type
     private pool: Pool;
     private tableName: string;
@@ -31,7 +31,7 @@ export class UserRepository<T> implements IBaseRepository<User> {
         return result.rows[0];
     }
 
-    async createEntity(entity: T): Promise<User> {
+    async createEntity(entity: User): Promise<User> {
         const table_keys = Object.keys(entity).join(', ');
         const table_values = Object.values(entity).join(', ');
         console.log(table_keys);
