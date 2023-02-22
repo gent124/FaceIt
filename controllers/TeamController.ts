@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { TeamService } from "../Services/TeamService";
+import { TeamService } from "../services/TeamService";
 
 export class TeamController<Team> {
     constructor(

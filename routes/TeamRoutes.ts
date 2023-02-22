@@ -1,9 +1,9 @@
 import { Router } from "express"
-import { BaseRepository } from "../Repositories/BaseRepository";
+import { BaseRepository } from "../repositories/BaseRepository";
 import { Pool } from "pg";
 import { Team } from "../Model/team";
-import { IBaseRepository } from "../interfaces/IbaseRepository";
-import { TeamService } from "../Services/TeamService";
+import { IBaseRepository } from "../interfaces/IBaseRepository";
+import { TeamService } from "../services/TeamService";
 import { TeamController } from "../controllers/TeamController";
 
 

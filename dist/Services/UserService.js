@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
-const BaseRepository_1 = require("../Repositories/BaseRepository"); //Importing the UserRepository
+const BaseRepository_1 = require("../repositories/BaseRepository"); //Importing the UserRepository
 //Declraing an instance of type UserRepository
 userRepository: BaseRepository_1.BaseRepository;
 class UserService {

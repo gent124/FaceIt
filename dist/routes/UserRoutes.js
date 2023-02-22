@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const UserController_1 = require("../controllers/UserController");
-const UserService_1 = require("../Services/UserService");
-const BaseRepository_1 = require("../Repositories/BaseRepository");
+const UserService_1 = require("../services/UserService");
+const BaseRepository_1 = require("../repositories/BaseRepository");
 const pg_1 = require("pg");
 const pool = new pg_1.Pool({
     host: process.env.DB_HOST,

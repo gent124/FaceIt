@@ -9,23 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ViewRepository = void 0;
-class ViewRepository {
-    constructor(pool, viewName) {
-        this.pool = pool;
-        this.viewName = viewName;
-    }
-    showView() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const query = `SELECT * FROM ${this.viewName}`;
-            console.log(query);
-            const result = yield this.pool.query(query);
-            const viewArray = [];
-            for (const row of result.rows) {
-                viewArray.push(row);
-            }
-            return viewArray;
+exports.TournamentViewController = void 0;
+class TournamentViewController {
+    constructor(tournamentService) {
+        this.tournamentService = tournamentService;
+        this.showTournamentGames = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            console.log("showTournamentGames");
+            const tournamentGames = yield this.tournamentService.showTournamentGames();
+            res.status(200).json(tournamentGames);
         });
     }
 }
-exports.ViewRepository = ViewRepository;
+exports.TournamentViewController = TournamentViewController;

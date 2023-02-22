@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { UsersController } from "../controllers/UserController";
-import { UserService } from "../Services/UserService";
+import { UserService } from "../services/UserService";
 import { User } from "../Model/user"
-import { IBaseRepository } from "../interfaces/IbaseRepository"
-import { BaseRepository } from "../Repositories/BaseRepository";
+import { IBaseRepository } from "../interfaces/IBaseRepository"
+import { BaseRepository } from "../repositories/BaseRepository";
 import { Pool } from "pg";
 
 const pool = new Pool({
@@ -16,7 +16,7 @@ const pool = new Pool({
 
 const userRoutes = Router();
 
-const UsersRepository: BaseRepository<User> = new BaseRepository(pool, "users");
+const UsersRepository: IBaseRepository<User> = new BaseRepository(pool, "users");
 const userService = new UserService(UsersRepository)
 const UserController = new UsersController(userService);
 

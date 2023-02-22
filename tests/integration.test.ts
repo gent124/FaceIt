@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from '../index';
-import { UserService } from '../Services/UserService';
+import { UserService } from '../services/UserService';
 import { User } from '../Model/user';
 
 

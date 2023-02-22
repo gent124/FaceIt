@@ -1,7 +1,7 @@
 import { table } from 'console';
 import { Pool } from 'pg' //Importing postgres from pg library
 import { User } from '../Model/user';
-import { IBaseRepository } from '../interfaces/IbaseRepository';
+import { IBaseRepository } from '../interfaces/IBaseRepository';
 import { Team } from '../Model/team';
 //Exporting UserRepositories class
 export class BaseRepository<T extends object> implements IBaseRepository<T> {
@@ -91,5 +91,5 @@ export class BaseRepository<T extends object> implements IBaseRepository<T> {
 
 
 
-    
+
 }

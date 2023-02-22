@@ -9,23 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ViewRepository = void 0;
-class ViewRepository {
-    constructor(pool, viewName) {
-        this.pool = pool;
-        this.viewName = viewName;
+const ViewRepository_1 = require("../repositories/ViewRepository");
+torunamentViewRepositoy: ViewRepository_1.ViewRepository;
+class TournamentViewService {
+    constructor(tournamentViewRepository) {
+        this.tournamentViewRepository = tournamentViewRepository;
     }
-    showView() {
+    showTournamentGames() {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = `SELECT * FROM ${this.viewName}`;
-            console.log(query);
-            const result = yield this.pool.query(query);
-            const viewArray = [];
-            for (const row of result.rows) {
-                viewArray.push(row);
-            }
-            return viewArray;
+            return yield this.tournamentViewRepository.showView();
         });
     }
 }
-exports.ViewRepository = ViewRepository;
+exports.default = TournamentViewService;

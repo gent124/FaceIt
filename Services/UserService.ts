@@ -1,17 +1,18 @@
 import { time } from 'console';
 import { Pool } from 'pg';
+import { IBaseRepository } from '../interfaces/IBaseRepository';
 import { User } from '../Model/user'; //Importing the User model
-import { BaseRepository } from '../Repositories/BaseRepository';//Importing the UserRepository
+import { BaseRepository } from '../repositories/BaseRepository';//Importing the UserRepository
 
 
 //Declraing an instance of type UserRepository
 userRepository: BaseRepository
 
 export class UserService {
-    userRepository: BaseRepository<User>;
+    userRepository: IBaseRepository<User>;
 
     //Constructor to inject the UserRepository
-    constructor(userRepository: BaseRepository<User>) {
+    constructor(userRepository: IBaseRepository<User>) {
         this.userRepository = userRepository;
     }
 
@@ -40,3 +41,6 @@ export class UserService {
         return result;
     }
 }
+
+
+

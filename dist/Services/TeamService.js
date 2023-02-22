@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TeamService = void 0;
-const BaseRepository_1 = require("../Repositories/BaseRepository");
+const BaseRepository_1 = require("../repositories/BaseRepository");
 teamRepository: BaseRepository_1.BaseRepository;
 class TeamService {
     //Constructor to inject the UserRepository

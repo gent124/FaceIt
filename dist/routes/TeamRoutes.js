@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const BaseRepository_1 = require("../Repositories/BaseRepository");
+const BaseRepository_1 = require("../repositories/BaseRepository");
 const pg_1 = require("pg");
-const TeamService_1 = require("../Services/TeamService");
+const TeamService_1 = require("../services/TeamService");
 const TeamController_1 = require("../controllers/TeamController");
 const pool = new pg_1.Pool({
     host: process.env.DB_HOST,
