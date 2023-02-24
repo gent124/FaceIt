@@ -9,7 +9,6 @@ describe('UserService', () => {
     let userRepository: BaseRepository<User>;
     let mockPool: Pool
     let mockTableName: string;
-    // let mockTableName = 'users';l
     beforeEach(() => {
         mockPool = new Pool({});
         userRepository = new BaseRepository(mockPool, mockTableName);
@@ -56,11 +55,6 @@ describe('UserService', () => {
 
             expect(actualUser).toEqual(expectedUser);
             expect(userRepository.getEntityById).toHaveBeenCalledTimes(1)
-
-
-
-
-
         });
     });
 
@@ -93,8 +87,59 @@ describe('UserService', () => {
 
 
     describe('updateUser', () => {
+        it('should validate and  create a user', async () => {
+            const updateUser = {
+                "id": 4,
+                "username": "tng123",
+                "email": "gent12@gmail.com",
+                "password": "hellcase155",
+                "date_of_birth": "1999-06-05T22:00:00.000Z",
+                "country": "USA",
+                "profile_picture": "https://hello123.com"
+            };
 
+            jest.spyOn(userRepository, 'updateEntity').mockResolvedValue(updateUser);
+            console.log(updateUser);
+
+            const updatingUser = await userRepository.updateEntity(4, updateUser)
+            console.log(updatingUser);
+
+            expect(updatingUser).toBe(updateUser);
+            expect(userRepository.updateEntity).toHaveBeenCalledTimes(1);
+
+
+
+        })
     })
+
+
+    describe('deleteUser', () => {
+        it('should delete a user', async () => {
+
+            const user = {
+                "id": 4,
+                "username": "tng123",
+                "email": "gent12@gmail.com",
+                "password": "hellcase155",
+                "date_of_birth": "1999-06-05T22:00:00.000Z",
+                "country": "USA",
+                "profile_picture": "https://hello123.com"
+            };
+
+            jest.spyOn(userRepository, 'deleteEntity').mockResolvedValue(user);
+
+            const deletingUser = await userRepository.deleteEntity(4)
+
+            expect(user).toEqual(deletingUser)
+            expect(userRepository.deleteEntity).toHaveBeenCalledTimes(1);
+
+
+
+
+
+        })
+    })
+
 });
 
 

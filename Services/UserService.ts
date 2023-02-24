@@ -7,27 +7,29 @@ import { Validator } from '../validator/Validator';
 
 //Declraing an instance of type UserRepository
 userRepository: BaseRepository
+//Creating a new intance of type userValidator to use for validation in functions
 userValidator: Validator;
 export class UserService {
     userRepository: IBaseRepository<User>;
 
     //Constructor to inject the UserRepository
     constructor(userRepository: IBaseRepository<User>) {
+        //initializing the userRepository
         this.userRepository = userRepository;
 
     }
 
-
+    //Defining the function getAllUsers that don't take any parameters and returns a Promise of type User[]
     async getAllUsers(): Promise<User[]> {
         const result = await this.userRepository.getEntities()
         return result;
     }
-
+    //Defining the getUserById that takes 1 parameter the id of user and return the user based on its id
     async getUserById(id: number): Promise<User | null> {
         const result = await this.userRepository.getEntityById(id);
         return result;
     }
-
+    //Defining the createUser function that acepts the id and the user as object and validates it throught Validator Class and than returns that user if it's added or returns null otherwise
     async createUser(id: number, user: User): Promise<User | null> {
         const userValidator = new Validator(user);
         console.log(userValidator.validateUser())
@@ -48,6 +50,7 @@ export class UserService {
         return null;
     }
 
+    //Defining the updateUser function that acepts the id and the user as object and validates it throught Validator Class and than returns that user if it's updated or returns null otherwise
     async updateUser(id: number, user: User): Promise<User | null> {
         const userValidator = new Validator(user);
         if (userValidator.validateUser()) {
