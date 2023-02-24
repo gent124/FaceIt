@@ -11,8 +11,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const BaseRepository_1 = require("../repositories/BaseRepository"); //Importing the UserRepository
+const Validator_1 = require("../validator/Validator");
 //Declraing an instance of type UserRepository
 userRepository: BaseRepository_1.BaseRepository;
+userValidator: Validator_1.Validator;
 class UserService {
     //Constructor to inject the UserRepository
     constructor(userRepository) {
@@ -20,7 +22,6 @@ class UserService {
     }
     getAllUsers() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Inside the user service");
             const result = yield this.userRepository.getEntities();
             return result;
         });
@@ -31,16 +32,33 @@ class UserService {
             return result;
         });
     }
-    createUser(user) {
+    createUser(id, user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.userRepository.createEntity(user);
-            return result;
+            const userValidator = new Validator_1.Validator(user);
+            console.log(userValidator.validateUser());
+            if (id) {
+                const existingId = yield this.userRepository.getEntityById(id);
+                if (existingId) {
+                    throw new Error('User already exists');
+                }
+                else {
+                    if (userValidator.validateUser()) {
+                        const result = yield this.userRepository.createEntity(user);
+                        return result;
+                    }
+                }
+            }
+            return null;
         });
     }
     updateUser(id, user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.userRepository.updateEntity(id, user);
-            return result;
+            const userValidator = new Validator_1.Validator(user);
+            if (userValidator.validateUser()) {
+                const result = yield this.userRepository.updateEntity(id, user);
+                return result;
+            }
+            return null;
         });
     }
     deleteUser(id) {

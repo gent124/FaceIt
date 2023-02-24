@@ -1,8 +1,8 @@
 import { table } from 'console';
 import { Pool } from 'pg' //Importing postgres from pg library
-import { User } from '../Model/user';
+import { User } from '../model/user';
 import { IBaseRepository } from '../interfaces/IBaseRepository';
-import { Team } from '../Model/team';
+import { Team } from '../model/team';
 //Exporting UserRepositories class
 export class BaseRepository<T extends object> implements IBaseRepository<T> {
     //Declaring a pool variable of the pg.Pool type

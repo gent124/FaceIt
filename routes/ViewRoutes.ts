@@ -14,7 +14,6 @@ const pool = new Pool({
 });
 const tournamentViewRoute = Router();
 
-
 const tournamentGamesRepository: ViewRepository = new ViewRepository(pool, 'torunament_games_view');
 const tournamentViewService = new TournamentViewService(tournamentGamesRepository);
 const tournamentViewController = new TournamentViewController(tournamentViewService);

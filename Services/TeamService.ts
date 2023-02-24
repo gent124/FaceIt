@@ -1,5 +1,5 @@
 import { BaseRepository } from "../repositories/BaseRepository";
-import { Team } from "../Model/team";
+import { Team } from "../model/team";
 import { Pool } from "pg";
 
 teamRepository: BaseRepository

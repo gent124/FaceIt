@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { UsersController } from "../controllers/UserController";
 import { UserService } from "../services/UserService";
-import { User } from "../Model/user"
+import { User } from "../model/user"
 import { IBaseRepository } from "../interfaces/IBaseRepository"
 import { BaseRepository } from "../repositories/BaseRepository";
 import { Pool } from "pg";

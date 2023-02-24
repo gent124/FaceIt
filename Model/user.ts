@@ -9,6 +9,7 @@
 // }
 
 export class User {
+    id: number;
     username: String;
     email: String;
     password: String;
@@ -16,7 +17,8 @@ export class User {
     country: String;
     profile_picture: String;
 
-    constructor(username: String, email: String, password: String, date_of_birth: String, country: String, profile_picture: String) {
+    constructor(id: number, username: String, email: String, password: String, date_of_birth: String, country: String, profile_picture: String) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;

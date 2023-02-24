@@ -26,8 +26,10 @@ class UsersController {
         });
         // //Method to create a user
         this.createUser = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const user = yield this.userService.createUser(req.body);
-            console.log(user);
+            const userCriteria = {
+                username: req.body.username,
+            };
+            const user = yield this.userService.createUser(req.body.id, req.body);
             if (user) {
                 res.status(200).send('User Added successfully with user_id ' + req.body.id);
             }

@@ -22,8 +22,11 @@ export class UsersController<User> {
 
     // //Method to create a user
     createUser = async (req: Request, res: Response) => {
-        const user = await this.userService.createUser(req.body);
-        console.log(user);
+        const userCriteria = {
+            username: req.body.username,
+
+        }
+        const user = await this.userService.createUser(req.body.id, req.body);
         if (user) {
             res.status(200).send('User Added successfully with user_id ' + req.body.id);
         }
@@ -48,3 +51,4 @@ export class UsersController<User> {
 
     }
 }
+
