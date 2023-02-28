@@ -18,7 +18,7 @@ export class BaseRepository<T extends object> implements IBaseRepository<T> {
         });
     }
 
-
+    // FAKE COMMIT COMMENT
     //getEntities returns all the entities based on the table that is declared
     async getEntities(): Promise<T[]> {
 
