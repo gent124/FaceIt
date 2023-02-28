@@ -14,7 +14,7 @@ export class BaseRepository<T extends object> implements IBaseRepository<T> {
         this.tableName = tableName;
         //Tests the connection with database and returns the error if not connected or prints in console that the db is connected
         this.pool.connect(function (err) {
-            if (err) throw err;
+            // if (err) throw err;
         });
     }
 

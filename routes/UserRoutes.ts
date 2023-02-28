@@ -6,13 +6,14 @@ import { User } from "../model/user"
 import { IBaseRepository } from "../interfaces/IBaseRepository"
 import { BaseRepository } from "../repositories/BaseRepository";
 import { Pool } from "pg";
-
+import dotenv from "dotenv";
+dotenv.config();
 //Creating Pool instance that gets the values from the .env file
 const pool = new Pool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
+    password: "root123",
     port: parseInt('5432')
 });
 
