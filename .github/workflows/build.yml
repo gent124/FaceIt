@@ -1,0 +1,11 @@
+on:
+  push
+    jobs:
+      build-app:
+        runs-on: ubuntu-latest
+        container: node:16
+        steps:
+          - run: npm install --force
+          - run: npm run build
+          - run: npm run dev
+          
